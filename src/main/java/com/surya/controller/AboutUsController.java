@@ -1,0 +1,17 @@
+package com.surya.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/aboutus")
+public class AboutUsController {
+
+    @GetMapping
+    public ResponseEntity<String> getAboutUsPage() {
+        
+        return ResponseEntity.ok("This is the about us page.");
+    }
+}
