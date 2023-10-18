@@ -18,13 +18,13 @@ public class FeedbackController {
 	@Autowired
 	private FeedbackService service;
 
-    @PostMapping("/save")
+    @PostMapping("/{userId}/save")
     public String saveFeedback(@RequestBody Feedback feedback) {
     	Feedback f1=service.saveFeedback(feedback);
     	return "Feedback submitted successfully!";
         
     }
-    @GetMapping("/getAll")
+    @GetMapping("/weekoff/getAll")
     public List<Feedback> getAll()
     {
     	return service.getAllFeedbacks();

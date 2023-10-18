@@ -1,23 +1,82 @@
 package com.surya.service;
 
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.deser.impl.ExternalTypeHandler.Builder;
+import com.surya.dto.RegistrationDto;
 import com.surya.model.RegistrationForm;
+//import com.surya.model.RegistrationForm;
 import com.surya.repo.RegisterRepo;
+import com.surya.userException.PasswordNotMatchException;
+import com.surya.userException.UserExistException;
 @Service
 public class RegisterServiceImp implements RegisterService {
 	@Autowired
 	private RegisterRepo repo;
-
+	
+	
+//	@Override
+//	public RegistrationForm saveRegister(RegistrationDto regDto) {
+//	  RegistrationForm reg=new RegistrationForm();
+//	  
+//	  reg.setName(regDto.getName());
+//	  reg.setMobile(regDto.getMobile());
+//	  reg.setEmail(regDto.getEmail());
+//	  reg.setPassword(regDto.getPassword());
+//	  reg.setAddress(regDto.getAddress());
+//	  return repo.save(reg);
+//	}
+	
+	
+	
 	@Override
-	public RegistrationForm saveRegister(RegistrationForm reg1) {
-		if(reg1.getPassword().equals(reg1.getConfirm_Password()))
+	public RegistrationForm saveRegister(RegistrationDto regDto) throws UserExistException, PasswordNotMatchException {
+		  RegistrationForm reg=new RegistrationForm();
+	
+	if(repo.findByEmail(regDto.getEmail()).isPresent() && repo.findByMobile(regDto.getMobile()).isPresent())
+	{
+
+		throw new UserExistException("you are already registered");
+	}
+	else
+	{  
+		if(regDto.getPassword().equals(regDto.getConfirm_Password()))
+	      {
+		
+		
+		reg.setName(regDto.getName());
+		  reg.setMobile(regDto.getMobile());
+		  reg.setEmail(regDto.getEmail());
+		  reg.setPassword(regDto.getPassword());
+		  reg.setAddress(regDto.getAddress());
+		  return repo.save(reg);
+	      }
+		
+		else
+		{
+			 throw new PasswordNotMatchException("your Password and ConfirmPassword are not same");
+		}
+		
+	  }
+	
+	
+	}
+
+	
+	public RegistrationForm saveRegister1(RegistrationDto regDto) {
+		
+		
+		RegistrationForm reg=new RegistrationForm();
+		  
+		  reg.setName(regDto.getName());
+		  reg.setMobile(regDto.getMobile());
+		  reg.setEmail(regDto.getEmail());
+		  reg.setPassword(regDto.getPassword());
+		  reg.setAddress(regDto.getAddress());
+	     if(reg.getPassword().equals(reg.getConfirm_Password()))
 		{
 			
 		}
@@ -26,7 +85,7 @@ public class RegisterServiceImp implements RegisterService {
 			return null;
 			
 		}
-		RegistrationForm r1=repo.save(reg1);
+		RegistrationForm r1=repo.save(reg);
 		return r1;
 		
 	}
@@ -59,5 +118,9 @@ public class RegisterServiceImp implements RegisterService {
 		}
 		return rg;
 	}
+
+
+	
+
 
 }

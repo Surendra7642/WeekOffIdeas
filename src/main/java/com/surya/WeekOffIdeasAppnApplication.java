@@ -4,10 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WeakOffIdeasAppnApplication {
+public class WeekOffIdeasAppnApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WeakOffIdeasAppnApplication.class, args);
+	public static void main(String[] args)   {
+		SpringApplication.run(WeekOffIdeasAppnApplication.class, args);
 	}
 
 }
+ 

@@ -12,4 +12,11 @@ import com.surya.model.RegistrationForm;
 public interface RegisterRepo extends JpaRepository<RegistrationForm, Integer> {
 //	@Query(value="select email from RegistrationForm")
 //	Optional<RegistrationForm> findByEmail(String email);
+	// Optional<RegistrationForm> findByPassword(String password);
+	public
+	Optional<RegistrationForm> findByEmail(String email);
+
+		
+		Optional<RegistrationForm> findByMobile(long mobile);
+		
 }

@@ -3,8 +3,8 @@ package com.surya.repo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.surya.model.Feedback;
+import com.surya.model.PlacesInfo;
 @Repository
-public interface FeedbackRepository extends JpaRepository<Feedback, Long> {
+public interface PlacesRepo extends JpaRepository<PlacesInfo, Long> {
 
 }

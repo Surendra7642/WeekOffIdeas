@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 @Entity
 @Table(name="Feedback_Table")
 public class Feedback {
@@ -12,11 +15,11 @@ public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @NotNull
     private String name;
-
+    @Email
     private String email;
-
+    @NotEmpty
     private String comment;
 
 	public Feedback() {

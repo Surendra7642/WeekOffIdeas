@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.surya.model.Feedback;
-import com.surya.repo.FeedbackRepository;
+import com.surya.repo.FeedbackRepo;
 
 @Service
 public class FeedbackService {
 	
 	@Autowired
-    private  FeedbackRepository feedbackRepository;
+    private  FeedbackRepo feedbackRepository;
 
   
     public Feedback saveFeedback(Feedback feedback) {
@@ -20,6 +20,6 @@ public class FeedbackService {
     }
 
     public List<Feedback> getAllFeedbacks() {
-        return feedbackRepository.findAll();
+        return (List<Feedback>) feedbackRepository.findAll();
     }
 }

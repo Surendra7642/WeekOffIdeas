@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/home")
+@RequestMapping("/weekoff/home")
 public class HomeController {
 
-    @GetMapping
-    public ResponseEntity<String> getHomePage() {
-       
-        return ResponseEntity.ok("Welcome to the home page.");
-    }
+//    @GetMapping
+//    public ResponseEntity<String> getHomePage() {
+//       
+//        return ResponseEntity.ok("Welcome to the home page.");
+//    }
 }
